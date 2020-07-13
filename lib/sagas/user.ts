@@ -6,7 +6,7 @@ import firebaseConfig from "..//firebaseconfig";
 function* fetchUsers() {
   let db: firebase.firestore.Firestore;
 
-  firebase.initializeApp(firebaseConfig);
+  if (!firebase.apps.length) {firebase.initializeApp(firebaseConfig);}
   db = firebase.firestore();
   let result = [];
 
@@ -19,6 +19,26 @@ function* fetchUsers() {
   });
 }
 
+export function* fetchQuestions() {
+  let db: firebase.firestore.Firestore;
+
+  if (!firebase.apps.length) {firebase.initializeApp(firebaseConfig);}
+  db = firebase.firestore();
+  let result = [];
+
+  let querySnapshot = yield db.collection("questions").get();
+  querySnapshot.forEach((doc) => result.push({
+    question: doc.data().question,
+    answer: doc.data().answer
+  }));
+
+  yield put({
+    type: "SET_QUESTIONS",
+    payload: result,
+  });
+}
+
 export default function* watchAsync() {
   yield takeEvery("FETCH_USERS", fetchUsers);
+  yield takeEvery("FETCH_QUESTIONS", fetchQuestions);
 }

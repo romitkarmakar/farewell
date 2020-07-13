@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Layout from "../components/layout";
 import Login from "../components/Login";
 import { useTypedSelector } from "../lib/reducers";
+import Question from "../components/Question";
 
 const styles = makeStyles(() => ({
   "@keyframes move": {
@@ -37,7 +38,7 @@ export default () => {
     <Layout>
       <Grid container justify="center">
         <Grid item xs={12} md={6} className={classes.hero}>
-          {selectedUser ? null : <Login />}
+          {selectedUser ? <Question /> : <Login />}
         </Grid>
       </Grid>
     </Layout>
