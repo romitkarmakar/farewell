@@ -1,10 +1,10 @@
 import { HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux";
 import { useSelector, TypedUseSelectorHook } from 'react-redux'
-import counter from "./counter"
+import user from "./user"
 
 const combinedReducers = combineReducers({
-    counter
+    user
 })  
 
 export default function reducer(state, action) {
@@ -14,7 +14,7 @@ export default function reducer(state, action) {
             ...state,
             ...action.payload,
             }
-            if (state.counter) nextState.counter = state.counter // Preserve state during client side navigations
+            if (state.counter) nextState.user = state.user // Preserve state during client side navigations
             return nextState
         default: 
             return combinedReducers(state, action);

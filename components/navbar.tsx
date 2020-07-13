@@ -1,5 +1,6 @@
 import { Typography, AppBar, Toolbar, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import { useTypedSelector } from "../lib/reducers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,14 +16,19 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar({}) {
   const classes = useStyles();
+  const selectedUser = useTypedSelector((state) => state.user.selectedUser);
 
   return (
     <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" className={classes.title}>
-          Next Material Template
+          GLUG Farewell
         </Typography>
-        <Button color="inherit">Login</Button>
+        {selectedUser ? (
+          <Typography>Welcome {selectedUser}</Typography>
+        ) : (
+          <Button color="inherit">Login</Button>
+        )}
       </Toolbar>
     </AppBar>
   );

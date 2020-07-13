@@ -1,18 +1,11 @@
 import React from "react";
-import { Grid, Typography, Fab } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Layout from "../components/layout";
-import { Add } from "@material-ui/icons";
-import Count from "../components/Count";
-import { useDispatch } from "react-redux";
+import Login from "../components/Login";
 import { useTypedSelector } from "../lib/reducers";
 
 const styles = makeStyles(() => ({
-  "@global": {
-    body: {
-      backgroundColor: "black",
-    },
-  },
   "@keyframes move": {
     from: {
       transform: "translate(-50%, 200%)",
@@ -24,13 +17,10 @@ const styles = makeStyles(() => ({
     },
   },
   hero: {
-    position: "absolute",
-    left: "50%",
-    top: "50%",
-    color: "white",
-    transform: "translate(-50%, -50%)",
-    animation: "$move 1s ease-in-out",
-    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    height: "60vh",
   },
   fab: {
     position: "fixed",
@@ -41,24 +31,15 @@ const styles = makeStyles(() => ({
 
 export default () => {
   const classes = styles();
-  const dispatch = useDispatch();
-  const clicked: number = useTypedSelector((state) => state.counter.clicked);
+  const selectedUser = useTypedSelector((state) => state.user.selectedUser);
 
   return (
     <Layout>
-      <Grid container>
-        <div className={classes.hero}>
-          <Typography variant="h2">Next Material Template</Typography>
-          <Count clicked={clicked} />
-        </div>
+      <Grid container justify="center">
+        <Grid item xs={12} md={6} className={classes.hero}>
+          {selectedUser ? null : <Login />}
+        </Grid>
       </Grid>
-      <Fab
-        color="primary"
-        className={classes.fab}
-        onClick={() => dispatch({ type: "CLICKED_ASYNC" })}
-      >
-        <Add />
-      </Fab>
     </Layout>
   );
 };
