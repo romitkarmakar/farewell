@@ -38,7 +38,7 @@ export default () => {
           onClick={() => dispatch({ type: "SET_USER", payload: option })}
         >
           <ListItemAvatar>
-            <Avatar src={option.image} />
+            <Avatar src={option.dp} />
           </ListItemAvatar>
           <ListItemText primary={option.name} />
         </ListItem>

@@ -17,6 +17,7 @@ function* fetchUsers() {
     result.push({
       name: doc.id,
       image: doc.data().image,
+      dp: doc.data().dp
     })
   );
 
