@@ -40,7 +40,7 @@ export function* fetchQuestions() {
   querySnapshot.forEach((doc) =>
     result.push({
       question: doc.data().question,
-      answer: doc.data().answer,
+      answer: doc.data().answer.toLowerCase(),
     })
   );
 
@@ -54,7 +54,9 @@ export function* checkAnswer(action) {
   let questions = yield select((state) => state.user.questions);
   let currentQuestion = yield select((state) => state.user.currentQuestion);
 
-  if (action.payload == questions[currentQuestion].answer) {
+  if (action.payload == questions[currentQuestion].answer.toLowerCase()) {
+    console.log(action.payload);
+    console.log(questions[currentQuestion].answer);
     yield put({
       type: "SET_MESSAGE",
       payload: {

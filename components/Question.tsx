@@ -47,9 +47,10 @@ export default () => {
               onChange={(e) => setAnswerInput(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
+                  console.log(answerInput.toLowerCase());
                   dispatch({
                     type: "CHECK_ANSWER",
-                    payload: answerInput,
+                    payload: answerInput.toLowerCase(),
                   });
                   setAnswerInput("");
                 }
