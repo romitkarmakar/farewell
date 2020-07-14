@@ -26,7 +26,7 @@ export default () => {
       getOptionLabel={(option) => option.name}
       renderInput={(params) => (
         <TextField
-          label="Enter your name"
+          label="Select your name"
           fullWidth
           variant="outlined"
           {...params}

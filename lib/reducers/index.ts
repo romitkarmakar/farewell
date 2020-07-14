@@ -14,7 +14,7 @@ export default function reducer(state, action) {
             ...state,
             ...action.payload,
             }
-            if (state.counter) nextState.user = state.user // Preserve state during client side navigations
+            if (state.user) nextState.user = state.user // Preserve state during client side navigations
             return nextState
         default: 
             return combinedReducers(state, action);
