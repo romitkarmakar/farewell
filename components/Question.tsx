@@ -12,6 +12,7 @@ import {
 import { useTypedSelector } from "../lib/reducers";
 import { useDispatch } from "react-redux";
 import Alert from "@material-ui/lab/Alert";
+import Cartoon from "./Cartoon";
 
 export default () => {
   const currentQuestion: number = useTypedSelector(
@@ -31,26 +32,31 @@ export default () => {
   return (
     <React.Fragment>
       <Card>
-        <CardHeader title="Question No.1" />
-        <CardContent>
-          <Typography>{questions[currentQuestion]?.question}</Typography>
-          <TextField
-            variant="outlined"
-            fullWidth
-            label="Enter your answer"
-            value={answerInput}
-            onChange={(e) => setAnswerInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                dispatch({
-                  type: "CHECK_ANSWER",
-                  payload: answerInput,
-                });
-                setAnswerInput("");
-              }
-            }}
-          />
-        </CardContent>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <CardContent>
+            <Cartoon />
+          </CardContent>
+          <CardContent>
+            <CardHeader title="Question No.1" />
+            <Typography>{questions[currentQuestion]?.question}</Typography>
+            <TextField
+              variant="outlined"
+              fullWidth
+              label="Enter your answer"
+              value={answerInput}
+              onChange={(e) => setAnswerInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  dispatch({
+                    type: "CHECK_ANSWER",
+                    payload: answerInput,
+                  });
+                  setAnswerInput("");
+                }
+              }}
+            />
+          </CardContent>
+        </div>
         <CardActions>
           <Button
             color="primary"

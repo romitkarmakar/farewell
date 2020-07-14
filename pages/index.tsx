@@ -6,7 +6,7 @@ import Login from "../components/Login";
 import { useTypedSelector } from "../lib/reducers";
 import Router from "next/router";
 import Question from "../components/Question";
-import { Backpack } from 'react-kawaii';
+import { Backpack } from "react-kawaii";
 
 const styles = makeStyles(() => ({
   "@keyframes move": {
@@ -35,16 +35,23 @@ const styles = makeStyles(() => ({
 export default () => {
   const classes = styles();
   const selectedUser = useTypedSelector((state) => state.user.selectedUser);
-  const isFinnish = useTypedSelector((state) => state.user.isFinnish)
+  const isFinnish = useTypedSelector((state) => state.user.isFinnish);
 
   React.useEffect(() => {
-    if(isFinnish) Router.push("/finnish")
-  }, [isFinnish])
+    if (isFinnish) Router.push("/finnish");
+  }, [isFinnish]);
 
   return (
     <Layout>
       <Grid container justify="center">
-        <Backpack size={320} mood="excited" color="#FFD882" position="center" />
+        {selectedUser ? null : (
+          <Backpack
+            size={320}
+            mood="excited"
+            color="#FFD882"
+            position="center"
+          />
+        )}
       </Grid>
       <Grid container justify="center">
         <Grid item xs={12} md={6} className={classes.hero}>
