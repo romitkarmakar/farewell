@@ -5,6 +5,7 @@ import Layout from "../components/layout";
 import Login from "../components/Login";
 import { useTypedSelector } from "../lib/reducers";
 import Question from "../components/Question";
+import { Backpack } from 'react-kawaii';
 
 const styles = makeStyles(() => ({
   "@keyframes move": {
@@ -36,6 +37,9 @@ export default () => {
 
   return (
     <Layout>
+      <Grid container justify="center">
+        <Backpack size={320} mood="excited" color="#FFD882" position="center" />
+      </Grid>
       <Grid container justify="center">
         <Grid item xs={12} md={6} className={classes.hero}>
           {selectedUser ? <Question /> : <Login />}
