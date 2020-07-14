@@ -15,7 +15,7 @@ import {
 } from "react-kawaii";
 
 export default () => {
-  let value: number = Math.floor(Math.random() * 11);
+  let value: number = 5;
   const currentQuestion = useTypedSelector(
     (state) => state.user.currentQuestion
   );

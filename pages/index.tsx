@@ -30,6 +30,14 @@ const styles = makeStyles(() => ({
     bottom: "3%",
     right: "3%",
   },
+  // "@global": {
+  //   body: {
+  //     backgroundImage: "url(/bg.jpg)",
+  //     backgroundPosition: "center",
+  //     backgroundRepeat: "no-repeat",
+  //     backgroundSize: "cover"
+  //   }
+  // }
 }));
 
 export default () => {

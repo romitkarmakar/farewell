@@ -37,7 +37,7 @@ export default () => {
             <Cartoon />
           </CardContent>
           <CardContent>
-            <CardHeader title="Question No.1" />
+            <CardHeader title={`Question No.${currentQuestion + 1}`} />
             <Typography>{questions[currentQuestion]?.question}</Typography>
             <TextField
               variant="outlined"
