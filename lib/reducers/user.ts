@@ -19,10 +19,6 @@ const initialState: IState = {
   users: [],
   questions: [],
   currentQuestion: 0,
-  selectedUser: {
-    name: 'Romit',
-    image: 'https://placekitten.com/50/50'
-  },
   isFinnish: false
 };
 
