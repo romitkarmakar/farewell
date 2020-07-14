@@ -12,7 +12,7 @@ import { useTypedSelector } from "../lib/reducers";
 
 export default () => {
   const dispatch = useDispatch();
-  const users: Array<string> = useTypedSelector((state) => state.user.users);
+  const users: Array<any> = useTypedSelector((state) => state.user.users);
 
   React.useEffect(() => {
     dispatch({
@@ -23,7 +23,7 @@ export default () => {
   return (
     <Autocomplete
       options={users}
-      getOptionLabel={(option) => option}
+      getOptionLabel={(option) => option.name}
       renderInput={(params) => (
         <TextField
           label="Enter your name"
@@ -38,9 +38,9 @@ export default () => {
           onClick={() => dispatch({ type: "SET_USER", payload: option })}
         >
           <ListItemAvatar>
-            <Avatar>{option[0].toUpperCase()}</Avatar>
+            <Avatar src={option.image} />
           </ListItemAvatar>
-          <ListItemText primary={option} />
+          <ListItemText primary={option.name} />
         </ListItem>
       )}
     />

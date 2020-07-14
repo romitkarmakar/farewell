@@ -1,14 +1,22 @@
+interface IUser {
+  name: string;
+  image: string;
+}
 interface IState {
-  selectedUser?: string;
-  users: Array<string>;
+  selectedUser?: IUser;
+  users: Array<IUser>;
   questions: Array<any>;
   currentQuestion: number;
+  message?: {
+    type: string;
+    body: string;
+  };
 }
 
 const initialState: IState = {
   users: [],
   questions: [],
-  currentQuestion: 0
+  currentQuestion: 0,
 };
 
 export default (state = initialState, action) => {
@@ -20,7 +28,9 @@ export default (state = initialState, action) => {
     case "SET_QUESTIONS":
       return { ...state, questions: action.payload };
     case "SET_CURRENT_QUESTION":
-      return { ...state, currentQuestion: action.payload}
+      return { ...state, currentQuestion: action.payload };
+    case "SET_MESSAGE":
+      return { ...state, message: action.payload };
     default:
       return state;
   }

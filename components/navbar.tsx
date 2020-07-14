@@ -1,4 +1,5 @@
-import { Typography, AppBar, Toolbar, Button } from "@material-ui/core";
+import React from "react";
+import { Typography, AppBar, Toolbar, Button, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTypedSelector } from "../lib/reducers";
 
@@ -25,7 +26,10 @@ export default function Navbar({}) {
           GLUG Farewell
         </Typography>
         {selectedUser ? (
-          <Typography>Welcome {selectedUser}</Typography>
+          <React.Fragment>
+            <Avatar src={selectedUser.image} />
+            <Typography>&nbsp;Welcome {selectedUser.name}</Typography>
+          </React.Fragment>
         ) : (
           <Button color="inherit">Login</Button>
         )}
