@@ -1,6 +1,7 @@
 interface IUser {
   name: string;
   image: string;
+  dp: string;
 }
 interface IState {
   selectedUser?: IUser;
