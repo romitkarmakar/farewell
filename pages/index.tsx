@@ -6,7 +6,6 @@ import Login from "../components/Login";
 import { useTypedSelector } from "../lib/reducers";
 import Router from "next/router";
 import Question from "../components/Question";
-import { Backpack } from "react-kawaii";
 
 const styles = makeStyles(() => ({
   "@keyframes move": {
@@ -30,14 +29,6 @@ const styles = makeStyles(() => ({
     bottom: "3%",
     right: "3%",
   },
-  // "@global": {
-  //   body: {
-  //     backgroundImage: "url(/bg.jpg)",
-  //     backgroundPosition: "center",
-  //     backgroundRepeat: "no-repeat",
-  //     backgroundSize: "cover"
-  //   }
-  // }
   "@global": {
     "body": {
       backgroundColor: "#3dccd0 !important"

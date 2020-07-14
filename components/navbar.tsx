@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, AppBar, Toolbar, Button, Avatar } from "@material-ui/core";
+import { Typography, AppBar, Toolbar, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTypedSelector } from "../lib/reducers";
 
@@ -27,11 +27,11 @@ export default function Navbar({}) {
         </Typography>
         {selectedUser ? (
           <React.Fragment>
-            <Avatar src={selectedUser.image} />
+            <Avatar src={selectedUser.dp} />
             <Typography>&nbsp;Welcome {selectedUser.name}</Typography>
           </React.Fragment>
         ) : (
-          <Button color="inherit">Login</Button>
+          null
         )}
       </Toolbar>
     </AppBar>

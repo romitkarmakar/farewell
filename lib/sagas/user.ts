@@ -17,7 +17,7 @@ function* fetchUsers() {
     result.push({
       name: doc.id,
       image: doc.data().image,
-      dp: doc.data().dp
+      dp: doc.data().dp,
     })
   );
 
@@ -40,7 +40,7 @@ export function* fetchQuestions() {
   querySnapshot.forEach((doc) =>
     result.push({
       question: doc.data().question,
-      answer: doc.data().answer.toLowerCase(),
+      answer: doc.data().answer,
     })
   );
 
@@ -53,28 +53,35 @@ export function* fetchQuestions() {
 export function* checkAnswer(action) {
   let questions = yield select((state) => state.user.questions);
   let currentQuestion = yield select((state) => state.user.currentQuestion);
+  let i = 0;
 
-  if (action.payload == questions[currentQuestion].answer.toLowerCase()) {
-    console.log(action.payload);
-    console.log(questions[currentQuestion].answer);
-    yield put({
-      type: "SET_MESSAGE",
-      payload: {
-        type: "success",
-        body: "Your answer is correct",
-      },
-    });
-    if (currentQuestion + 1 == questions.length)
+  for (; i < questions[currentQuestion].answer.length; i++) {
+    if (
+      action.payload.toLowerCase().replace(/\s/g, "") ==
+      questions[currentQuestion].answer[i].toLowerCase().replace(/\s/g, "")
+    ) {
       yield put({
-        type: "SET_FINNISH",
-        payload: true,
+        type: "SET_MESSAGE",
+        payload: {
+          type: "success",
+          body: "Your answer is correct",
+        },
       });
-    else
-      yield put({
-        type: "SET_CURRENT_QUESTION",
-        payload: currentQuestion + 1,
-      });
-  } else
+      if (currentQuestion + 1 == questions.length)
+        yield put({
+          type: "SET_FINNISH",
+          payload: true,
+        });
+      else
+        yield put({
+          type: "SET_CURRENT_QUESTION",
+          payload: currentQuestion + 1,
+        });
+      break;
+    }
+  }
+  console.log(i)
+  if (i == questions[currentQuestion].answer.length)
     yield put({
       type: "SET_MESSAGE",
       payload: {

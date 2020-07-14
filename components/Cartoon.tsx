@@ -15,18 +15,25 @@ import {
 } from "react-kawaii";
 
 export default () => {
-  let value: number = 5;
+  let [value, setValue] = React.useState(5)
   const currentQuestion = useTypedSelector(
     (state) => state.user.currentQuestion
   );
-  const params = {
-    mood: "happy",
+  const message = useTypedSelector(state => state.user.message);
+  const [params, setParams] = React.useState({
+    mood: "excited",
     size: 150,
-  };
+  });
 
   React.useEffect(() => {
-    value = Math.floor(Math.random() * 11);
+    setValue(Math.floor(Math.random() * 11));
+    if (params.mood == "sad") setParams({ ...params, mood: "excited" });
   }, [currentQuestion]);
+
+  React.useEffect(() => {
+    if(!message) return;
+    if(message.type == "error") setParams({...params, mood: "sad"})
+  }, [message])
 
   switch (value) {
     case 0:
