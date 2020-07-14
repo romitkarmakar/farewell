@@ -38,6 +38,11 @@ const styles = makeStyles(() => ({
   //     backgroundSize: "cover"
   //   }
   // }
+  "@global": {
+    "body": {
+      backgroundColor: "#3dccd0 !important"
+    }
+  }
 }));
 
 export default () => {
@@ -51,7 +56,7 @@ export default () => {
 
   return (
     <Layout>
-      <Grid container justify="center">
+      {/* <Grid container justify="center">
         {selectedUser ? null : (
           <Backpack
             size={320}
@@ -60,12 +65,13 @@ export default () => {
             position="center"
           />
         )}
-      </Grid>
+      </Grid> */}
       <Grid container justify="center">
         <Grid item xs={12} md={6} className={classes.hero}>
           {selectedUser ? <Question /> : <Login />}
         </Grid>
       </Grid>
+      <img src="/city.jpg" style={{ width: "100vw", position: "fixed", bottom: "0px", height: 300, zIndex: -1 }} />
     </Layout>
   );
 };
