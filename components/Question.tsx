@@ -40,18 +40,28 @@ export default () => {
             label="Enter your answer"
             value={answerInput}
             onChange={(e) => setAnswerInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                dispatch({
+                  type: "CHECK_ANSWER",
+                  payload: answerInput,
+                });
+                setAnswerInput("");
+              }
+            }}
           />
         </CardContent>
         <CardActions>
           <Button
             color="primary"
             variant="contained"
-            onClick={() =>
+            onClick={() => {
               dispatch({
                 type: "CHECK_ANSWER",
                 payload: answerInput,
-              })
-            }
+              });
+              setAnswerInput("");
+            }}
           >
             Submit Answer
           </Button>

@@ -11,12 +11,14 @@ interface IState {
     type: string;
     body: string;
   };
+  isFinnish: boolean;
 }
 
 const initialState: IState = {
   users: [],
   questions: [],
   currentQuestion: 0,
+  isFinnish: false
 };
 
 export default (state = initialState, action) => {
@@ -31,6 +33,8 @@ export default (state = initialState, action) => {
       return { ...state, currentQuestion: action.payload };
     case "SET_MESSAGE":
       return { ...state, message: action.payload };
+    case "SET_FINNISH":
+      return { ...state, isFinnish: action.payload };
     default:
       return state;
   }

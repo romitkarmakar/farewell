@@ -52,9 +52,8 @@ export function* fetchQuestions() {
 export function* checkAnswer(action) {
   let questions = yield select((state) => state.user.questions);
   let currentQuestion = yield select((state) => state.user.currentQuestion);
-  console.log(questions)
 
-  if (action.payload == questions[currentQuestion].answer)
+  if (action.payload == questions[currentQuestion].answer) {
     yield put({
       type: "SET_MESSAGE",
       payload: {
@@ -62,10 +61,23 @@ export function* checkAnswer(action) {
         body: "Your answer is correct",
       },
     });
-  else
+    if (currentQuestion + 1 == questions.length)
+      yield put({
+        type: "SET_FINNISH",
+        payload: true,
+      });
+    else
+      yield put({
+        type: "SET_CURRENT_QUESTION",
+        payload: currentQuestion + 1,
+      });
+  } else
     yield put({
       type: "SET_MESSAGE",
-      body: "Your answer is incorrect",
+      payload: {
+        type: "error",
+        body: "Your answer is incorrect",
+      },
     });
 }
 

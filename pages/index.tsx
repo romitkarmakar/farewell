@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Layout from "../components/layout";
 import Login from "../components/Login";
 import { useTypedSelector } from "../lib/reducers";
+import Router from "next/router";
 import Question from "../components/Question";
 
 const styles = makeStyles(() => ({
@@ -33,6 +34,11 @@ const styles = makeStyles(() => ({
 export default () => {
   const classes = styles();
   const selectedUser = useTypedSelector((state) => state.user.selectedUser);
+  const isFinnish = useTypedSelector((state) => state.user.isFinnish)
+
+  React.useEffect(() => {
+    if(isFinnish) Router.push("/finnish")
+  }, [isFinnish])
 
   return (
     <Layout>
