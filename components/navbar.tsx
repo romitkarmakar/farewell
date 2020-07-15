@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, AppBar, Toolbar, Avatar } from "@material-ui/core";
+import { AppBar, Toolbar, Avatar } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTypedSelector } from "../lib/reducers";
 
@@ -12,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    margin: 0,
+    fontSize: "1rem"
   },
 }));
 
@@ -22,13 +24,14 @@ export default function Navbar({}) {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Typography variant="h6" className={classes.title}>
-          GLUG Farewell
-        </Typography>
+        <h2 className={classes.title}>
+          GLUG Farewell 2020
+        </h2>
+        <div style={{ flex: 1 }} />
         {selectedUser ? (
           <React.Fragment>
             <Avatar src={selectedUser.dp} />
-            <Typography>&nbsp;Welcome {selectedUser.name}</Typography>
+            <span>&nbsp;Welcome {selectedUser.name}</span>
           </React.Fragment>
         ) : (
           null

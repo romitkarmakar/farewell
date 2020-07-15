@@ -15,6 +15,11 @@ const useStyles = makeStyles(() => ({
   image: {
     height: "90vh",
   },
+  "@global":{
+    "body": {
+      backgroundColor: "#000"
+    }
+  }
 }));
 
 export default () => {

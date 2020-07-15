@@ -5,7 +5,6 @@ import {
   CardActions,
   Button,
   TextField,
-  CardHeader,
   Snackbar,
   Hidden,
 } from "@material-ui/core";
@@ -13,8 +12,20 @@ import { useTypedSelector } from "../lib/reducers";
 import { useDispatch } from "react-redux";
 import Alert from "@material-ui/lab/Alert";
 import Cartoon from "./Cartoon";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles(() => ({
+  actions: {
+    display: "flex",
+    justifyContent: "flex-end",
+    "@media screen and (max-width: 450px)": {
+      justifyContent: "center",
+    }
+  },
+}));
 
 export default () => {
+  const classes = useStyles();
   const currentQuestion: number = useTypedSelector(
     (state) => state.user.currentQuestion
   );
@@ -38,7 +49,7 @@ export default () => {
           </CardContent>
         </Hidden>
         <CardContent>
-          <CardHeader title={`Question No.${currentQuestion + 1}`} />
+          <h2>{`Question No.${currentQuestion + 1}`}</h2>
           <Typography>{questions[currentQuestion]?.question}</Typography>
           <TextField
             fullWidth
@@ -58,7 +69,7 @@ export default () => {
           />
         </CardContent>
       </div>
-      <CardActions>
+      <CardActions className={classes.actions}>
         <Button
           color="primary"
           variant="contained"

@@ -21,27 +21,29 @@ export default () => {
   }, []);
 
   return (
-    <Autocomplete
-      options={users}
-      getOptionLabel={(option) => option.name}
-      renderInput={(params) => (
-        <TextField
-          label="Select your name"
-          fullWidth
-          variant="outlined"
-          {...params}
-        />
-      )}
-      renderOption={(option) => (
-        <ListItem
-          onClick={() => dispatch({ type: "SET_USER", payload: option })}
-        >
-          <ListItemAvatar>
-            <Avatar src={option.dp} />
-          </ListItemAvatar>
-          <ListItemText primary={option.name} />
-        </ListItem>
-      )}
-    />
+    <div style={{ margin: "0px 16px " }}>
+      <Autocomplete
+        options={users}
+        getOptionLabel={(option) => option.name}
+        renderInput={(params) => (
+          <TextField
+            label="Select your name"
+            fullWidth
+            variant="outlined"
+            {...params}
+          />
+        )}
+        renderOption={(option) => (
+          <ListItem
+            onClick={() => dispatch({ type: "SET_USER", payload: option })}
+          >
+            <ListItemAvatar>
+              <Avatar src={option.dp} />
+            </ListItemAvatar>
+            <ListItemText primary={option.name} />
+          </ListItem>
+        )}
+      />
+    </div>
   );
 };

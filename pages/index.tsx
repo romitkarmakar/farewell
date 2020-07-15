@@ -30,10 +30,21 @@ const styles = makeStyles(() => ({
     right: "3%",
   },
   "@global": {
-    "body": {
-      backgroundColor: "#3dccd0 !important"
+    body: {
+      backgroundColor: "#3dccd0 !important",
+    },
+  },
+  image: {
+    width: "100vw",
+    position: "fixed",
+    bottom: "0px",
+    height: 300,
+    zIndex: -1,
+    "@media screen and (max-width: 450px)": {
+      height: 200,
+      width: "100vw",
     }
-  }
+  },
 }));
 
 export default () => {
@@ -62,7 +73,7 @@ export default () => {
           {selectedUser ? <Question /> : <Login />}
         </Grid>
       </Grid>
-      <img src="/city.jpg" style={{ width: "100vw", position: "fixed", bottom: "0px", height: 300, zIndex: -1 }} />
+      <img src="/city.jpg" className={classes.image} />
     </Layout>
   );
 };

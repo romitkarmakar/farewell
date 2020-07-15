@@ -57,7 +57,7 @@ class MyApp extends App<{}, {}, IState> {
     return (
       <React.Fragment>
         <Head>
-          <title>GLUG Farewell</title>
+          <title>GLUG Farewell 2020</title>
         </Head>
         <ThemeProvider theme={theme}>
           <CssBaseline />
