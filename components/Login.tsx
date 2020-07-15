@@ -34,7 +34,6 @@ export default () => {
       )}
       renderOption={(option) => (
         <ListItem
-          button
           onClick={() => dispatch({ type: "SET_USER", payload: option })}
         >
           <ListItemAvatar>

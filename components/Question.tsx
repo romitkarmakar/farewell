@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Card,
   CardContent,
   Typography,
   CardActions,
@@ -8,6 +7,7 @@ import {
   TextField,
   CardHeader,
   Snackbar,
+  Hidden,
 } from "@material-ui/core";
 import { useTypedSelector } from "../lib/reducers";
 import { useDispatch } from "react-redux";
@@ -31,49 +31,48 @@ export default () => {
 
   return (
     <React.Fragment>
-      <Card>
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
+      <div style={{ display: "flex", justifyContent: "space-around" }}>
+        <Hidden smDown>
           <CardContent>
             <Cartoon />
           </CardContent>
-          <CardContent>
-            <CardHeader title={`Question No.${currentQuestion + 1}`} />
-            <Typography>{questions[currentQuestion]?.question}</Typography>
-            <TextField
-              variant="outlined"
-              fullWidth
-              label="Enter your answer"
-              value={answerInput}
-              onChange={(e) => setAnswerInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  console.log(answerInput.toLowerCase());
-                  dispatch({
-                    type: "CHECK_ANSWER",
-                    payload: answerInput.toLowerCase(),
-                  });
-                  setAnswerInput("");
-                }
-              }}
-            />
-          </CardContent>
-        </div>
-        <CardActions>
-          <Button
-            color="primary"
-            variant="contained"
-            onClick={() => {
-              dispatch({
-                type: "CHECK_ANSWER",
-                payload: answerInput,
-              });
-              setAnswerInput("");
+        </Hidden>
+        <CardContent>
+          <CardHeader title={`Question No.${currentQuestion + 1}`} />
+          <Typography>{questions[currentQuestion]?.question}</Typography>
+          <TextField
+            fullWidth
+            label="Enter your answer"
+            value={answerInput}
+            onChange={(e) => setAnswerInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                console.log(answerInput.toLowerCase());
+                dispatch({
+                  type: "CHECK_ANSWER",
+                  payload: answerInput.toLowerCase(),
+                });
+                setAnswerInput("");
+              }
             }}
-          >
-            Submit Answer
-          </Button>
-        </CardActions>
-      </Card>
+          />
+        </CardContent>
+      </div>
+      <CardActions>
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={() => {
+            dispatch({
+              type: "CHECK_ANSWER",
+              payload: answerInput,
+            });
+            setAnswerInput("");
+          }}
+        >
+          Submit Answer
+        </Button>
+      </CardActions>
       <Snackbar
         open={message ? true : false}
         autoHideDuration={6000}

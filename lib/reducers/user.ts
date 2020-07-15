@@ -2,6 +2,7 @@ interface IUser {
   name: string;
   image: string;
   dp: string;
+  pdf: string;
 }
 interface IState {
   selectedUser?: IUser;
