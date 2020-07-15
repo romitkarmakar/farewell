@@ -31,7 +31,7 @@ const styles = makeStyles(() => ({
   },
   "@global": {
     body: {
-      backgroundColor: "#3dccd0 !important",
+      backgroundColor: "#fcc624 !important",
     },
   },
   image: {
@@ -43,7 +43,19 @@ const styles = makeStyles(() => ({
     "@media screen and (max-width: 450px)": {
       height: 200,
       width: "100vw",
-    }
+    },
+  },
+  imageT: {
+    height: "100vh",
+    width: "100vw",
+    position: "fixed",
+    bottom: "0px",
+    zIndex: -1,
+    "@media screen and (max-width: 450px)": {
+      right: "0px",
+      width: "170vw",
+      height: "60vh"
+    },
   },
 }));
 
@@ -73,7 +85,8 @@ export default () => {
           {selectedUser ? <Question /> : <Login />}
         </Grid>
       </Grid>
-      <img src="/city.jpg" className={classes.image} />
+      {/* <img src="/city.jpg" className={classes.image} /> */}
+      <img src="/bg1.png" className={classes.imageT} />
     </Layout>
   );
 };

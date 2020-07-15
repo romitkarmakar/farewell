@@ -20,8 +20,14 @@ const useStyles = makeStyles(() => ({
     justifyContent: "flex-end",
     "@media screen and (max-width: 450px)": {
       justifyContent: "center",
-    }
+    },
   },
+  root: {
+    transform: "translateX(-20%)",
+    "@media screen and (max-width: 450px)": {
+      transform: "translate(0%)"
+    }
+  }
 }));
 
 export default () => {
@@ -42,48 +48,50 @@ export default () => {
 
   return (
     <React.Fragment>
-      <div style={{ display: "flex", justifyContent: "space-around" }}>
-        <Hidden smDown>
+      <div className={classes.root}>
+        <div style={{ display: "flex", justifyContent: "space-around" }}>
+          <Hidden smDown>
+            <CardContent>
+              <Cartoon />
+            </CardContent>
+          </Hidden>
           <CardContent>
-            <Cartoon />
+            <h2>{`Question No.${currentQuestion + 1}`}</h2>
+            <Typography>{questions[currentQuestion]?.question}</Typography>
+            <TextField
+              fullWidth
+              label="Enter your answer"
+              value={answerInput}
+              onChange={(e) => setAnswerInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  console.log(answerInput.toLowerCase());
+                  dispatch({
+                    type: "CHECK_ANSWER",
+                    payload: answerInput.toLowerCase(),
+                  });
+                  setAnswerInput("");
+                }
+              }}
+            />
           </CardContent>
-        </Hidden>
-        <CardContent>
-          <h2>{`Question No.${currentQuestion + 1}`}</h2>
-          <Typography>{questions[currentQuestion]?.question}</Typography>
-          <TextField
-            fullWidth
-            label="Enter your answer"
-            value={answerInput}
-            onChange={(e) => setAnswerInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                console.log(answerInput.toLowerCase());
-                dispatch({
-                  type: "CHECK_ANSWER",
-                  payload: answerInput.toLowerCase(),
-                });
-                setAnswerInput("");
-              }
+        </div>
+        <CardActions className={classes.actions}>
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => {
+              dispatch({
+                type: "CHECK_ANSWER",
+                payload: answerInput,
+              });
+              setAnswerInput("");
             }}
-          />
-        </CardContent>
+          >
+            Submit Answer
+          </Button>
+        </CardActions>
       </div>
-      <CardActions className={classes.actions}>
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={() => {
-            dispatch({
-              type: "CHECK_ANSWER",
-              payload: answerInput,
-            });
-            setAnswerInput("");
-          }}
-        >
-          Submit Answer
-        </Button>
-      </CardActions>
       <Snackbar
         open={message ? true : false}
         autoHideDuration={6000}

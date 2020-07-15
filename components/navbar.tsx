@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, Avatar } from "@material-ui/core";
+import { AppBar, Toolbar, Avatar, Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useTypedSelector } from "../lib/reducers";
 
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     margin: 0,
-    fontSize: "1rem"
+    fontSize: "1rem",
   },
 }));
 
@@ -24,18 +24,16 @@ export default function Navbar({}) {
   return (
     <AppBar position="static">
       <Toolbar>
-        <h2 className={classes.title}>
-          GLUG Farewell 2020
-        </h2>
+        <h2 className={classes.title}>GLUG Farewell 2020</h2>
         <div style={{ flex: 1 }} />
         {selectedUser ? (
           <React.Fragment>
             <Avatar src={selectedUser.dp} />
-            <span>&nbsp;Welcome {selectedUser.name}</span>
+            <Hidden smDown>
+              <span style={{ textTransform: "capitalize" }}>&nbsp;Welcome {selectedUser.name}</span>
+            </Hidden>
           </React.Fragment>
-        ) : (
-          null
-        )}
+        ) : null}
       </Toolbar>
     </AppBar>
   );
