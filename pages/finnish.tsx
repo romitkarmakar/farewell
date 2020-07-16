@@ -38,7 +38,7 @@ export default () => {
       </Head>
       <Layout>
         <div style={{ display: "flex", justifyContent: "center", padding: 16 }}>
-          <Button variant="contained" onClick={() => window.location.href = selectedUser?.pdf}>Download PDF</Button>
+          <Button style={{display: "none"}} variant="contained" onClick={() => window.location.href = selectedUser?.pdf}>Download PDF</Button>
         </div>
         <div className={classes.root}>
           <a href={selectedUser?.image} download="invitation.png">
