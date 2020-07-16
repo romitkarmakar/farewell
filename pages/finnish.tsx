@@ -3,7 +3,7 @@ import Layout from "../components/layout";
 import { useTypedSelector } from "../lib/reducers";
 import { makeStyles } from "@material-ui/core/styles";
 import Head from "next/head";
-import { Button } from "@material-ui/core";
+// import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -38,7 +38,7 @@ export default () => {
       </Head>
       <Layout>
         <div style={{ display: "flex", justifyContent: "center", padding: 16 }}>
-          <Button variant="contained" onClick={() => window.location.href = selectedUser?.pdf}>Download PDF</Button>
+          {/* <Button variant="contained" onClick={() => window.location.href = selectedUser?.pdf}>Download PDF</Button> */}
         </div>
         <div className={classes.root}>
           <a href={selectedUser?.image} download="invitation.png">
