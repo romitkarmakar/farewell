@@ -54,7 +54,7 @@ const styles = makeStyles(() => ({
     "@media screen and (max-width: 450px)": {
       right: "0px",
       width: "170vw",
-      height: "60vh"
+      height: "48vh"
     },
   },
 }));
