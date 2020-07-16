@@ -4,6 +4,21 @@
 
 ## Installation
 
+- Create the firebase config file: ```lib/firebaseconfig.ts``` with the following contents:
+```js
+const firebaseConfig = {
+  apiKey: "...",
+  authDomain: "...",
+  databaseURL: "...",
+  projectId: "...",
+  storageBucket: "...",
+  appId: "...",
+};
+
+export default firebaseConfig;
+```
+Replace the ```...``` with the firebase project config values.
+
 - Install all the node packages
 ```bash
 yarn
