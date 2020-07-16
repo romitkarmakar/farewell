@@ -31,9 +31,6 @@ export default () => {
 
   return (
     <div style={{ margin: "0px 16px " }}>
-      <h2 style={{ fontFamily: "'Sora', sans-serif" }}>
-        Maybe know who this is is ?
-      </h2>
       <Autocomplete
         options={users}
         getOptionLabel={(option) => option.name}
@@ -58,6 +55,9 @@ export default () => {
           </ListItem>
         )}
       />
+      <h2 style={{ fontFamily: "'Sora', sans-serif" }}>
+        nam to suna hi hoga ?
+      </h2>
     </div>
   );
 };

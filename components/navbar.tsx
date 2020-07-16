@@ -24,7 +24,7 @@ export default function Navbar({}) {
   return (
     <AppBar position="static">
       <Toolbar>
-        <h2 className={classes.title}>GLUG Farewell 2020</h2>
+        <h2 className={classes.title}>2 rupaye ki pepsi, apne senior seksi</h2>
         <div style={{ flex: 1 }} />
         {selectedUser ? (
           <React.Fragment>
