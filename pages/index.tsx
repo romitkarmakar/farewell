@@ -53,8 +53,8 @@ const styles = makeStyles(() => ({
     zIndex: -1,
     "@media screen and (max-width: 450px)": {
       right: "0px",
-      width: "170vw",
-      height: "48vh"
+      width: "150vw",
+      height: "42vh"
     },
   },
 }));
